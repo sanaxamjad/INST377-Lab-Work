@@ -1,39 +1,16 @@
-Replace this with your complete HTML from Lab 1
-
-Hook it up to CSS by including style.css in the <head> tag
-
-Then add CSS class names to your HTML to make it look like the lab pictures.
-For example: <div class="selector">
-
-You should not need to edit the CSS to do this, only the HTML.
-
-Don't forget to add an actual set of image descriptions to your image carousel.
-
-
-<!DOCTYPE html>
-<html lang="en">
-   <style>
-  * {
-  box-sizing: border-box;
-  }
-
-  .column {
-  float: left;
-  width: 22%;
-  padding: 10px;
-  }
-
-  /* Clearfix (clear floats) */
-  .row::after {
-  content: "";
-  clear: both;
-  display: flex;
-  }
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </style>
-  <title>Page Title</title>
+  <title>Sana Amjad Lab 2</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Sana Amjad: Lab 2 for INST377</h1>
+  <div class="wrapper">
+  <div class="container">
+    <header class="header"><h1>Sana Amjad: Lab 2 for INST377</h1>
+    </header>
   <h2>Album Names</h2>
   <ol>
     <li>Thriller - Michael Jackson</li>
@@ -50,6 +27,6 @@ Don't forget to add an actual set of image descriptions to your image carousel.
     <img src="images/mochi.png" alt="mochi.png">
     <img src="images/mochi.svg" alt="mochi.svg">
   </div>The images shown above are Mochis, which are cute gifs and pictures<br>
-  SANAXAMJAD <a href="https://github.com/sanaxamjad/INST377-Lab-Work">My Github Account</a><br>
-</body>
-</html>
+  <footer class="footer"<br>sanaxamjad <a href="https://github.com/sanaxamjad/INST377-Lab-Work">My Github Account</a><br>
+  </footer>
+  </body>
