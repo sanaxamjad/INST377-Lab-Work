@@ -138,7 +138,7 @@ form {
   background-color: rgba(255, 224, 138, 0.7);
   flex: 1 2 auto;
   margin: 1rem;
-  align-items: center;
+  align-items: normal;
   max-width: 450px;
 }
 
