@@ -30,11 +30,13 @@
   </div>
   <div class="right_section box">
   <h2>Image Carousel</h2>
-  <div id="slideshow-container" class="'grid">
-    <img class="slideshow-slide" src="images/mochi.gif" alt="mochi.gif">
-    <img class="slideshow-slide" src="images/mochi.jpg" alt="mochi.jpg">
-    <img class="slideshow-slide" src="images/mochi.png" alt="mochi.png">
-    <img class="slideshow-slide" src="images/mochi.svg" alt="mochi.svg">
+  <div class="carousel"></div>
+   <button class="prev"></button>
+   <div class="slides">
+    <div class="carousel_item visible"><img id="slide_1" src="images/mochi.gif" alt="mochi.gif">
+    <div class="carousel_item hidden" ><img id="slide_2" src="images/mochi.jpg" alt="mochi.jpg">
+    <div class="carousel_item hidden" ><img id="slide_3" src="images/mochi.png" alt="mochi.png">
+    <div class="carousel_item hidden" ><img id="slide_4" src="images/mochi.svg" alt="mochi.svg">
   </div>
   <div class="box">
     <p>The images shown above are Mochi images.<br/>First one is a Mochi GIF<br/>Second image is bubble Mochi<br/>
@@ -42,25 +44,6 @@
     </p>
     </div>
   </div>
-
-  <script>
-   let slideIndex = 0;
-   showSlides();
-
-   function showSlides () {
-   let i;
-   const slides = document.getElementsbyClassName("slideshow-slide");
-   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-   }
-   slideIndex++;
-   if(slideIndex > slides.length) {
-    slideIndex = 1;
-   }
-   slides[slideIndex = 1].style.display = "block";
-   setTimeout(showSlides, 3000);
-   }
-  </script>
 </div>
 </div>
 <footer class="footer"<br>SANAXAMJAD <a href="https://github.com/sanaxamjad/INST377-Lab-Work">My Github Account</a><br>
