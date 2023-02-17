@@ -1,5 +1,69 @@
-<!--
-    Replace this with your working code from Lab 2, and include:
-    - The styles in this folder's `style.css`
-    - The script in script.js, which should be included via a `<script src="script.js" >` call before your closing </body> tag 
--->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sana Amjad Lab 2</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <header class="header"><h1>Sana Amjad: Lab 2 for INST377</h1>
+  </header>
+    <div class="container">
+    <div class="left_section box">
+  <h2>Album Names</h2>
+  <div class="box"
+  <ol>
+    <li>Thriller - Michael Jackson</li>
+    <li>Donde Estan Los Ladrones - Shakira</li>
+    <li>II - Boys II Men</li>
+    <li>Fine Line - Harry Styles</li>
+    <li>AC/DC - Back in Black </li>
+  </ol>
+  </div> 
+  </div>
+  <div class="right_section box">
+  <h2>Image Carousel</h2>
+  <div id="slideshow-container" class="'grid">
+    <img class="slideshow-slide" src="images/mochi.gif" alt="mochi.gif">
+    <img class="slideshow-slide" src="images/mochi.jpg" alt="mochi.jpg">
+    <img class="slideshow-slide" src="images/mochi.png" alt="mochi.png">
+    <img class="slideshow-slide" src="images/mochi.svg" alt="mochi.svg">
+  </div>
+  <div class="box">
+    <p>The images shown above are Mochi images.<br/>First one is a Mochi GIF<br/>Second image is bubble Mochi<br/>
+      Third image is a Mochi smiling<br/>Fourth image is a Mochi that has lines around it
+    </p>
+    </div>
+  </div>
+
+  <script>
+   let slideIndex = 0;
+   showSlides();
+
+   function showSlides () {
+   let i;
+   const slides = document.getElementsbyClassName("slideshow-slide");
+   for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+   }
+   slideIndex++;
+   if(slideIndex > slides.length) {
+    slideIndex = 1;
+   }
+   slides[slideIndex = 1].style.display = "block";
+   setTimeout(showSlides, 3000);
+   }
+  </script>
+</div>
+</div>
+<footer class="footer"<br>SANAXAMJAD <a href="https://github.com/sanaxamjad/INST377-Lab-Work">My Github Account</a><br>
+</footer>
+</body>
+</html>
