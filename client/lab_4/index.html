@@ -1,10 +1,92 @@
-<!-- Bring in your successful HTML/CSS from the Flexbox lab -->
-<!-- Try typing 'doc' at the top of this file and pressing "tab" -->
-<!-- if your development environment is set up correctly -->
-<!-- the Emmett plugin will set this file up for you -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sana Amjad Lab 4</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+		/* Define your own color scheme here */
+		body {
+			background-color: #F8F8F8; /* Light background */
+			color: #222; /* High-contrast font color */
+		}
+		header {
+			background-color: #222; /* Dark banner color */
+		}
+		a {
+			color: #FF5733; /* Link color */
+		}
+		footer {
+			background-color: #222; /* Dark banner color */
+			color: #FFF;
+			position: fixed; /* Make the footer sticky */
+			bottom: 0;
+			width: 100%;
+		}
+		form {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-top: 20px;
+		}
+		input[type="email"] {
+			border: none;
+			border-radius: 20px;
+			margin-right: 10px;
+			padding: 10px;
+			width: 60%;
+		}
+		@media screen and (max-width: 736px) {
+			main {
+				flex-direction: column; /* Reorganize flexbox for smaller screens */
+			}
+			.plant {
+				margin: 10px auto;
+				width: 80%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>My Plants Website</h1>
+	</header>
 
-<!-- Requirements -->
-<!-- Your page will need a form in it with an 'action' to /api and a single text field with an id/name of "resto" -->
-<!-- If you open /routes/apiRoutes and go to line 38 you will find the server side answer to your request! -->
+	<main>
+		<section class="plant">
+			<img src="https://via.placeholder.com/200x200" alt="plant image">
+			<h2>Plant Name</h2>
+			<p>Description of the plant.</p>
+			<a href="#">Learn More</a>
+		</section>
 
-<!-- This week doesn't have a script.js file in it, because you're focusing on HTML and CSS -->
+		<section class="plant">
+			<img src="https://via.placeholder.com/200x200" alt="plant image">
+			<h2>Plant Name</h2>
+			<p>Description of the plant.</p>
+			<a href="#">Learn More</a>
+		</section>
+
+		<section class="plant">
+			<img src="https://via.placeholder.com/200x200" alt="plant image">
+			<h2>Plant Name</h2>
+			<p>Description of the plant.</p>
+			<a href="#">Learn More</a>
+		</section>
+
+		<section class="plant">
+			<img src="https://via.placeholder.com/200x200" alt="plant image">
+			<h2>Plant Name</h2>
+			<p>Description of the plant.</p>
+			<a href="#">Learn More</a>
+		</section>
+	</main>
+
+	<footer>
+		<form action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json" method="get">
+			<label for="resto">Subscribe to our newsletter:</label>
+			<input type="text" id="resto" name="resto" placeholder="Enter your email">
+			<input type="submit" value="Submit">
+		</form>
+	</footer>
+</body>
+</html>
