@@ -1,92 +1,37 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Sana Amjad Lab 4</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<style>
-		/* Define your own color scheme here */
-		body {
-			background-color: #F8F8F8; /* Light background */
-			color: #222; /* High-contrast font color */
-		}
-		header {
-			background-color: #222; /* Dark banner color */
-		}
-		a {
-			color: #FF5733; /* Link color */
-		}
-		footer {
-			background-color: #222; /* Dark banner color */
-			color: #FFF;
-			position: fixed; /* Make the footer sticky */
-			bottom: 0;
-			width: 100%;
-		}
-		form {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			margin-top: 20px;
-		}
-		input[type="email"] {
-			border: none;
-			border-radius: 20px;
-			margin-right: 10px;
-			padding: 10px;
-			width: 60%;
-		}
-		@media screen and (max-width: 736px) {
-			main {
-				flex-direction: column; /* Reorganize flexbox for smaller screens */
-			}
-			.plant {
-				margin: 10px auto;
-				width: 80%;
-			}
-		}
-	</style>
-</head>
-<body>
-	<header>
-		<h1>My Plants Website</h1>
-	</header>
-
-	<main>
-		<section class="plant">
-			<img src="https://via.placeholder.com/200x200" alt="plant image">
-			<h2>Plant Name</h2>
-			<p>Description of the plant.</p>
-			<a href="#">Learn More</a>
-		</section>
-
-		<section class="plant">
-			<img src="https://via.placeholder.com/200x200" alt="plant image">
-			<h2>Plant Name</h2>
-			<p>Description of the plant.</p>
-			<a href="#">Learn More</a>
-		</section>
-
-		<section class="plant">
-			<img src="https://via.placeholder.com/200x200" alt="plant image">
-			<h2>Plant Name</h2>
-			<p>Description of the plant.</p>
-			<a href="#">Learn More</a>
-		</section>
-
-		<section class="plant">
-			<img src="https://via.placeholder.com/200x200" alt="plant image">
-			<h2>Plant Name</h2>
-			<p>Description of the plant.</p>
-			<a href="#">Learn More</a>
-		</section>
-	</main>
-
-	<footer>
-		<form action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json" method="get">
-			<label for="resto">Subscribe to our newsletter:</label>
-			<input type="text" id="resto" name="resto" placeholder="Enter your email">
-			<input type="submit" value="Submit">
-		</form>
-	</footer>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sana Amjad Lab 4</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <h1>Sana's Labs for INST377</h1>
+      </header>
+      <div class="container">
+        <div class="left_section box">
+          <h3>Form Inputs</h3>
+          <div class="box">
+            <p>Restaurant Name</p>
+            <form action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json">
+              <label for="resto"></label>
+              <input type="text" id="resto" />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+        <div class="right_section box">
+          <h3>Local Restaurants</h3>
+          <div class="restaurant_list box">A list of local restaurants</div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      SANAXAMJAD <a href="https://github.com/sanaxamjad/INST377-Lab-Work">My Github Account</a>
+    </footer>
+  </body>
 </html>
