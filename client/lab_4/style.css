@@ -136,14 +136,14 @@ div{
 }
 
 .left_section {
-  background-color: rgba(237, 255, 165, 0.8);
+  background-color: rgba(52, 235, 196, 0.8);
   flex: 0 1 auto;
   margin: 1rem;
   padding: 1.5rem;
 }
 
 .right_section {
-  background-color: rgba(237, 255, 165, 0.8);
+  background-color: rgba(52, 235, 196, 0.8);
   flex: 1 2 auto;
   margin: 1rem;
   align-items: center;
