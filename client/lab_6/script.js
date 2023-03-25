@@ -13,33 +13,26 @@ function injectHTML(list) {
     target.innerHTML += str;
   });
 }
-
 function generateList() {
-  const list = [];
   const selectedRestaurants = [];
-  const restaurantList = document.getElementById('restaurant_list');
 
-  // Get all the list items from the restaurant list
-  const items = restaurantList.getElementsByTagName('li');
-  for (let i = 0; i < items.length; i++) {
-    list.push(items[i].textContent);
-  }
+  // Get form data and filter list
+  const formData = new FormData(document.querySelector('.main_form'));
+  const formProps = Object.fromEntries(formData);
+  const filteredList = filterList(currentList, formProps.resto);
 
   // Select 15 random restaurants
-  while (selectedRestaurants.length < 15) {
-    const randomIndex = getRandomIntInclusive(0, list.length - 1);
-    if (!selectedRestaurants.includes(list[randomIndex])) {
-      selectedRestaurants.push(list[randomIndex]);
+  const selectedIndexes = [];
+  while (selectedIndexes.length < 15 && filteredList.length > 0) {
+    const randomIndex = getRandomIntInclusive(0, filteredList.length - 1);
+    if (!selectedIndexes.includes(randomIndex)) {
+      selectedIndexes.push(randomIndex);
+      selectedRestaurants.push(filteredList[randomIndex]);
     }
   }
 
   // Update the restaurant list with the selected restaurants
-  restaurantList.innerHTML = '';
-  selectedRestaurants.forEach((restaurant) => {
-    const listItem = document.createElement('li');
-    listItem.textContent = restaurant;
-    restaurantList.appendChild(listItem);
-  });
+  injectHTML(selectedRestaurants);
 }
 
 function filterList(list, query) {
@@ -50,13 +43,14 @@ function filterList(list, query) {
   });
 }
 
+let currentList = [];
+
 async function mainEvent() {
   const mainForm = document.querySelector('.main_form');
   const filterButton = document.querySelector('#filter_button');
   const loadDataButton = document.querySelector('#data_load');
   const generateListButton = document.querySelector('#generate');
-
-  let currentList = [];
+  const randomRestoButton = document.querySelector('#random_resto');
 
   // Listen for form submission
   mainForm.addEventListener('submit', async (submitEvent) => {
@@ -87,7 +81,22 @@ async function mainEvent() {
   // Listen for generate list button click
   generateListButton.addEventListener('click', () => {
     generateList();
-    const list = document.getElementById('restaurant_list');
+  });
+
+  // Add event listener for "load county data" button
+  loadDataButton.addEventListener('click', async () => {
+    // Send GET request to API and retrieve data
+    const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+    currentList = await results.json();
+    console.table(currentList);
+    injectHTML(currentList);
+  });
+
+  // Listen for random restaurant button click
+  randomRestoButton.addEventListener('click', () => {
+    const randomIndex = getRandomIntInclusive(0, currentList.length - 1);
+    const randomRestaurant = [currentList[randomIndex]];
+    injectHTML(randomRestaurant);
   });
 }
 
