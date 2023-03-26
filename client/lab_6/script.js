@@ -13,92 +13,78 @@ function injectHTML(list) {
     target.innerHTML += str;
   });
 }
-function generateList() {
-  const selectedRestaurants = [];
-
-  // Get form data and filter list
-  const formData = new FormData(document.querySelector('.main_form'));
-  const formProps = Object.fromEntries(formData);
-  const filteredList = filterList(currentList, formProps.resto);
-
-  // Select 15 random restaurants
-  const selectedIndexes = [];
-  while (selectedIndexes.length < 15 && filteredList.length > 0) {
-    const randomIndex = getRandomIntInclusive(0, filteredList.length - 1);
-    if (!selectedIndexes.includes(randomIndex)) {
-      selectedIndexes.push(randomIndex);
-      selectedRestaurants.push(filteredList[randomIndex]);
-    }
-  }
-
-  // Update the restaurant list with the selected restaurants
-  injectHTML(selectedRestaurants);
-}
-
+/* A quick filter that will return something based on a matching input */
 function filterList(list, query) {
   return list.filter((item) => {
     const lowerCaseName = item.name.toLowerCase();
     const lowerCaseQuery = query.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
-  });
+
+  })
 }
 
-let currentList = [];
+function cutRestaurantList(list) {
+  console.log('fired cut list');
+  const range = [...Array(15).keys()];
+  return newArray = range.map((item) => {
+    const index = getRandomIntInclusive(0, list.length -1);
+    return list[index]
+  })
 
-async function mainEvent() {
+}
+
+async function mainEvent() { // the async keyword means we can make API requests
   const mainForm = document.querySelector('.main_form');
-  const filterButton = document.querySelector('#filter_button');
+  const filterDataButton = document.querySelector('#filter_button');
   const loadDataButton = document.querySelector('#data_load');
   const generateListButton = document.querySelector('#generate');
-  const randomRestoButton = document.querySelector('#random_resto');
 
-  // Listen for form submission
-  mainForm.addEventListener('submit', async (submitEvent) => {
-    submitEvent.preventDefault();
+  const loadAnimation = document.querySelector('#data_load_animation');
+  loadAnimation.style.display = 'none';
 
-    console.log('form submission');
+  let currentList = []; // this is "scoped" to the main event function
+  
+  /* We need to listen to an "event" to have something happen in our page - here we're listening for a "submit" */
+  loadDataButton.addEventListener('click', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
+    console.log('Loading Data'); 
+    loadAnimation.style.display = 'inline-block';
 
-    // Send GET request to API and retrieve data
+    // Basic GET request - this replaces the form Action
     const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
+
+    // This changes the response from the GET into data we can use - an "object"
     currentList = await results.json();
-    console.table(currentList);
-    injectHTML(currentList);
+    loadAnimation.style.display = 'none';
+    console.table(currentList); 
   });
 
-  // Listen for filter button click
-  filterButton.addEventListener('click', (event) => {
+
+  filterDataButton.addEventListener('click', (event) => {
     console.log('Clicked FilterButton');
 
-    // Get form data and filter list
     const formData = new FormData(mainForm);
     const formProps = Object.fromEntries(formData);
+
+    console.log(formProps);
     const newList = filterList(currentList, formProps.resto);
+    injectHTML(newList);
+
 
     console.log(newList);
-    injectHTML(newList);
   });
 
-  // Listen for generate list button click
-  generateListButton.addEventListener('click', () => {
-    generateList();
-  });
+  generateListButton.addEventListener('click', (event) => {
+    console.log('generate new List');
+    const restaurantsList = cutRestaurantList(currentList);
+    console.log(restaurantsList);
+    injectHTML(restaurantsList);
 
-  // Add event listener for "load county data" button
-  loadDataButton.addEventListener('click', async () => {
-    // Send GET request to API and retrieve data
-    const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
-    currentList = await results.json();
-    console.table(currentList);
-    injectHTML(currentList);
-  });
-
-  // Listen for random restaurant button click
-  randomRestoButton.addEventListener('click', () => {
-    const randomIndex = getRandomIntInclusive(0, currentList.length - 1);
-    const randomRestaurant = [currentList[randomIndex]];
-    injectHTML(randomRestaurant);
-  });
+  })
 }
 
-// Wait for page elements to load before firing main event
-document.addEventListener('DOMContentLoaded', mainEvent);
+/*
+  This adds an event listener that fires our main event only once our page elements have loaded
+  The use of the async keyword means we can "await" events before continuing in our scripts
+  In this case, we load some data when the form has submitted
+*/
+document.addEventListener('DOMContentLoaded', async () => mainEvent()); // the async keyword means we can make API requests
