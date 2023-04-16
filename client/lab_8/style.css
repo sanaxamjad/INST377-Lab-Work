@@ -1,7 +1,6 @@
 /* CSS instructions for Lab 5 */
 /* Bring in your successful CSS from week 4 */
 /* In your #map rule, set map to display:none; to temporarily hide your map box */
-add the sticky footer in this code 
 * {
   box-sizing: border-box;
 }
@@ -35,8 +34,11 @@ body {
   font-weight: 400;
   line-height: 1.5;
   background-color: rgb(57, 176, 204);
+  /* Add sticky footer */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
-
 
 a {
   display: inline-block;
@@ -66,6 +68,13 @@ div{
 }
 */
 
+#map {
+  width: 400px;
+  height: 300px;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
 .wrapper {
   min-height: 100vh;
   display: flex;
